@@ -13,7 +13,7 @@ else
 	exists dmenu && dmenu="dmenu"
 fi
 
-[[ -z $dmenu ]] && echo No dmenu-like program is installed. Install dmenu or rofi for X, fuzzel for wayland
+[[ -z $dmenu ]] && echo "No dmenu-like program is installed. Install dmenu or rofi for X, fuzzel for wayland" >&2 && exit 1
 
 opener=xdg-open
 type $opener >/dev/null || opener=surf
