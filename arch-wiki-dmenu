@@ -20,7 +20,7 @@ type $opener >/dev/null || opener=surf
 
 WIKI_PATH=/usr/share/doc/arch-wiki/html/en
 
-WIKI_SEARCH=$(find "$WIKI_PATH" -type f -name '*.html' | sed -E 's|.*/||; s/\.html$//; s/_/ /g' | uniq | sort | $dmenu | sed 's/ /_/g')
+WIKI_SEARCH=$(find "$WIKI_PATH" -type f -name '*.html' | sed -E 's|.*/||; s/\.html$//; s/_/ /g' | uniq | sort | $dmenu "$@" | sed 's/ /_/g')
 WIKI="$WIKI_PATH/$WIKI_SEARCH.html"
 
 if [ -n "$WIKI_SEARCH" ]; then
