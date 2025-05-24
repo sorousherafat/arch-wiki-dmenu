@@ -23,6 +23,6 @@ WIKI_PATH=/usr/share/doc/arch-wiki/html/en
 WIKI_SEARCH=$(find "$WIKI_PATH" -type f -name '*.html' | sed -E 's|.*/||; s/\.html$//; s/_/ /g' | uniq | sort | $dmenu "$@" | sed 's/ /_/g')
 WIKI="$WIKI_PATH/$WIKI_SEARCH.html"
 
-if [ -n "$WIKI_SEARCH" ]; then
-	$opener $WIKI
-fi
+[ ! -f "$WIKI" ] && echo "No item named ${WIKI_SEARCH} was found." >&2 && exit 1
+
+$opener $WIKI
